@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Music Wallet!</title>
+
+    <meta name="author" content="Alexandre Pinto">
+
+    <link href="{% static 'musicwalletapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'musicwalletapp/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 vert-offset-top">
+			<nav class="navbar navbar-default navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<a style="font-size: 32px; color: #fff" class="navbar-brand brand" href="#">Music Wallet</a>
+				</div>
+			</nav>
+			<div class="panel panel-default">
+			  <!-- Table -->
+			  <table class="table">
+			  	<tr>
+				    <th bgcolor="#D3D3D3" style="text-align: center;">Users</th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"><a class="glyphicon glyphicon glyphicon-plus" aria-hidden="true" href="#"></a></th>
+			  	</tr>
+			  	<tr>
+				    <th>Name</th>
+				    <th>Email</th>
+				    <th></th>
+				    <th></th>
+			  	</tr>
+				{% if users.count > 0 %}
+				  	{% for user in users %}
+				  	<tr>
+					    <td>{{ user.name}}</td>
+					    <td>{{ user.email}}</td>
+					    <td><a class="glyphicon glyphicon glyphicon-wrench" aria-hidden="true" href="#"></a></td>
+				  	</tr>
+					{% endfor %}
+				{% else %}
+				    <td style="text-align: center;">The list of users is empy</td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				{% endif %}
+			  	<tr>
+				    <td>&nbsp;</td>
+				</tr>
+			    <tr>
+				    <th bgcolor="#D3D3D3" style="text-align: center;">Musics</th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"><a class="glyphicon glyphicon glyphicon-plus" aria-hidden="true" href="#"></a></th>
+			  	</tr>
+			  	<tr>
+				    <th>Title</th>
+				    <th>Artist</th>
+				    <th>Album</th>
+				    <th></th>
+			  	</tr>
+			  	{% if musics.count > 0 %}
+				  	{% for music in musics %}
+				  	<tr>
+					    <td>{{ music.title}}</td>
+					    <td>{{ music.artist}}</td>
+					    <td>{{ music.album}}</td>
+					    <td><a class="glyphicon glyphicon glyphicon-wrench" aria-hidden="true" href="#"></a></td>
+				  	</tr>
+					{% endfor %}
+				{% else %}
+				    <td style="text-align: center;">The list of musics is empy</td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				{% endif %}
+
+
+			  </table>
+			</div>
+		</div>
+	</div>
+</div>
+	<script src="{% static 'musicwalletapp/js/jquery.min.js' %}"></script>
+	<script src="{% static 'musicwalletapp/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'musicwalletapp/js/scripts.js' %}"></script>
+  </body>
+</html>

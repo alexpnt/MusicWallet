@@ -1,0 +1,22 @@
+.vert-offset-top{
+    margin-top: 2em;
+}
+
+.brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.white {
+    color: black;
+}
+
+.gi-x{font-size: 3em;}
+
+table td {
+    border-top: none !important;
+}
