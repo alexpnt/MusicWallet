@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Music Wallet!</title>
+
+    <meta name="author" content="Alexandre Pinto">
+
+    <link href="{% static 'musicwalletapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'musicwalletapp/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 vert-offset-top">
+			<nav class="navbar navbar-default navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<a style="font-size: 32px; color: #fff" class="navbar-brand brand" href="{% url 'index' %}">Music Wallet</a>
+				</div>
+			</nav>
+			
+ 			{% block content %}
+            {% endblock %}
+
+
+		</div>
+	</div>
+</div>
+	<script src="{% static 'musicwalletapp/js/jquery.min.js' %}"></script>
+	<script src="{% static 'musicwalletapp/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'musicwalletapp/js/scripts.js' %}"></script>
+  </body>
+</html>

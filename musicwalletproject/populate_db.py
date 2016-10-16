@@ -1,8 +1,8 @@
 import os,django
+import json
 os.environ["DJANGO_SETTINGS_MODULE"] = "musicwalletproject.settings"
 django.setup()
 
-import json
 from musicwalletapp.models import Music
 
 def populate_music_db(dump_file):
