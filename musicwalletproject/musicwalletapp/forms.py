@@ -1,5 +1,5 @@
 from django import forms
-from .models import Music,User
+from models import Music,User
 from django.forms import ModelForm
 
 class UserForm(forms.ModelForm):
