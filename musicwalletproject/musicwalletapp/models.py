@@ -13,7 +13,7 @@ class Music(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
-    favourite_musics = models.ManyToManyField(Music)
+    favourite_musics = models.ManyToManyField(Music, blank=True)
 
     def __str__(self):
         return self.title

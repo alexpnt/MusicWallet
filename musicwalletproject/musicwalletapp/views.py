@@ -73,7 +73,7 @@ def user_edit(request, pk):
 	        return redirect('index')
 	else:
 	    form = UserForm(instance=user)
-	return render(request, 'musicwalletapp/music_edit.html', {'form': form})
+	return render(request, 'musicwalletapp/user_edit.html', {'form': form})
 
 def user_delete(request,pk):
 	try:
