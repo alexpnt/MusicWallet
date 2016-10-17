@@ -7,7 +7,7 @@
 				    <th bgcolor="#D3D3D3" style="text-align: center;">Users</th>
 				    <th bgcolor="#D3D3D3"></th>
 				    <th bgcolor="#D3D3D3"></th>
-				    <th bgcolor="#D3D3D3"><a class="glyphicon glyphicon glyphicon-plus" aria-hidden="true" href="#"></a></th>
+				    <th bgcolor="#D3D3D3"><a class="glyphicon glyphicon glyphicon-plus" aria-hidden="true" href="{% url 'user_new' %}"></a></th>
 			  	</tr>
 			  	<tr>
 				    <th>Name</th>
@@ -20,14 +20,20 @@
 				  	<tr>
 					    <td>{{ user.name}}</td>
 					    <td>{{ user.email}}</td>
-					    <td><a class="glyphicon glyphicon glyphicon-wrench" aria-hidden="true" href="#"></a></td>
+					    <td></td>
+					    <td>
+					    	<a class="glyphicon glyphicon glyphicon-wrench" aria-hidden="true" href="{% url 'user_edit' pk=user.pk %}"></a>
+					    	<a class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" href="{% url 'user_delete' pk=user.pk %}"></a>
+					    </td>
 				  	</tr>
 					{% endfor %}
 				{% else %}
+				 <tr>
 				    <td style="text-align: center;">The list of users is empy</td>
 					<td></td>
 				    <td></td>
 				    <td></td>
+				 </tr>
 				{% endif %}
 			  	<tr>
 				    <td>&nbsp;</td>
