@@ -1,6 +1,6 @@
 import os,django
 import json
-os.environ["DJANGO_SETTINGS_MODULE"] = "musicwalletproject.settings"
+os.environ["DJANGO_SETTINGS_MODULE"] = "musicwalletproject.settings.development"
 django.setup()
 
 from musicwalletapp.models import Music

@@ -77,13 +77,17 @@ WSGI_APPLICATION = 'musicwalletproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'musicwallet_db',
         'USER': secret['DB_USER'],
         'PASSWORD': secret['DB_PASSWORD'],
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
+
 }
 
 # Password validation
