@@ -65,7 +65,11 @@ Add an existing music to the list of favourites from an existing user.
 Delete a favourite music from the list of favourites from an existing user.
 
 ```DELETE /api/music/<music_id>/user/user_id```
- 
+
+####Live version:####
+
+This project is available online at http://musicwallet.pythonanywhere.com/
+
 ####How to run locally:####
 
 1 - Clone the repository:
@@ -89,9 +93,13 @@ Delete a favourite music from the list of favourites from an existing user.
 5 - Populate the database
 	
 	python populate_db.py
-4 - Run the server:
+6 - Run the server:
 		
 	python manage.py runserver --settings=musicwalletproject.settings.development
+
+7 - Fire up your favourite browser and head to http://127.0.0.1:8000/musicwallet/ 
+
+Enjoy your app !
 
 
 	
