@@ -75,28 +75,13 @@ WSGI_APPLICATION = 'musicwalletproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'musicwallet_db',
-#         'USER': secret['DB_USER'],
-#         'PASSWORD': secret['DB_PASSWORD'],
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#         }
-#     }
-
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'musicwallet$musicwallet_db',
-        'USER': "musicwallet",
-        'PASSWORD': "mysqldatabase",
-        'HOST': 'musicwallet.mysql.pythonanywhere-services.com',
+        'NAME': 'musicwallet_db',
+        'USER': secret['DB_USER'],
+        'PASSWORD': secret['DB_PASSWORD'],
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
