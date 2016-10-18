@@ -10,17 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
+import os,pickle
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q1y1*!a&3v5s-hf7ngbue4(z*@lq*0j!_)q$uw!1#70ot-hn0y'
+secret=pickle.load(open("secret.pkl","rb"))
+SECRET_KEY = secret['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'musicwallet_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': secret['DB_USER'],
+        'PASSWORD': secret['DB_PASSWORD'],
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -121,5 +121,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
 
 STATIC_URL = '/static/'
