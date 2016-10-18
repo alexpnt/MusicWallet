@@ -12,8 +12,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'musicwallet_db',
-        'USER': secret['DB_USER'],
-        'PASSWORD': secret['DB_PASSWORD'],
+        'USER': 'mysql',
+        'PASSWORD': 'mysql',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
