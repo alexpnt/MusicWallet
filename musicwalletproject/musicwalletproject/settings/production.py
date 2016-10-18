@@ -8,6 +8,10 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
 
+SECRET_KEY = "q1y1*!a&3v5s-hf7ngbue4(z*@lq*0j!_)q$uw!1#70ot-hn0y"
+
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
