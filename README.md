@@ -85,12 +85,16 @@ This project is available online at http://musicwallet.pythonanywhere.com/
 
 3 - Setup the MySQL database
 
-* Create a user "mysql"
-* Create a database name "musicwallet_db" 
+		mysql -uroot
+		mysql>CREATE DATABASE musicwallet_db;
+		mysql>CREATE USER 'mysql'@'localhost' IDENTIFIED BY 'mysql;
+		mysql>GRANT ALL PRIVILEGES ON musicwallet_db.* TO 'mysql'@'localhost'; 
+		mysql>FLUSH PRIVILEGES;
+		mysql>quit
 
 4 - Run migrations
 
-	python manage.py migrate
+	python manage.py migrate --settings=musicwalletproject.settings.development
 
 5 - Populate the database
 	
