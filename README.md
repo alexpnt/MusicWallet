@@ -15,6 +15,8 @@ MusicWallet is a Web App used to manage users and their favourite musics, exposi
 * [Python 2.x](https://www.python.org/downloads/)
 * [Django 1.10.2](https://www.djangoproject.com/download/)
 * [Django REST framework](http://www.django-rest-framework.org/)
+* [MySQL](http://www.mysql.com/)
+* [mysqlclient](https://pypi.python.org/pypi/mysqlclient)
 
 #### REST API:####
 
