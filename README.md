@@ -77,7 +77,7 @@ This project is available online at http://musicwallet.pythonanywhere.com/
 1 - Clone the repository:
 
 	git clone https://github.com/AlexPnt/MusicWallet.git
-	cd MusicWallet
+	cd MusicWallet/musicwalletproject
 
 2 - Install dependencies:
 
