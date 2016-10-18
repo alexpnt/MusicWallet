@@ -96,7 +96,7 @@ This project is available online at http://musicwallet.pythonanywhere.com/
 
 	python manage.py migrate --settings=musicwalletproject.settings.development
 
-5 - Populate the database
+5 - Populate the database with musics
 	
 	python populate_db.py
 6 - Run the server:
