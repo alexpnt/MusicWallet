@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.template import RequestContext
-from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import loader
 from models import Music,User
@@ -9,6 +8,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from serializers import UserSerializer,MusicSerializer
 from forms import MusicForm,UserForm
+
 
 index_tpl="musicwalletapp/index.html"
 edit_music_tpl="musicwalletapp/music_edit.html"
@@ -380,10 +380,16 @@ def api_favourite_music(request,pk1,pk2,format=None):
 	return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-##404###
 
-def handler404(request):
-    response = render_to_response('404.html', {},
-                                  context_instance=RequestContext(request))
-    response.status_code = status.HTTP_404_NOT_FOUND
-    return response
+
+
+
+
+
+
+
+
+
+
+
+
