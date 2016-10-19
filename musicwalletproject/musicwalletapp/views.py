@@ -37,6 +37,12 @@ def music_new(request):
 		form = MusicForm(request.POST)
 
 		if form.is_valid():
+			musics=Music.objects.all()
+			for music in musics:
+				if form.cleaned_data.get('title')==music.title and \
+				form.cleaned_data.get('artist')==music.artist and \
+				form.cleaned_data.get('album')==music.album:
+					return render(request, edit_music_tpl, {'form': form})
 			form.save()
 			return redirect('index')
 		return render(request, edit_music_tpl, {'form': form})
@@ -94,6 +100,10 @@ def user_new(request):
 		form = UserForm(request.POST)
 
 		if form.is_valid():
+			users=User.objects.all()
+			for user in users:
+				if form.cleaned_data.get('name')==user.name and form.cleaned_data.get('email')==user.email:
+					return render(request, edit_usr_tpl, {'form': form})
 			form.save()
 			return redirect('index')
 		return render(request, edit_usr_tpl, {'form': form})
@@ -189,6 +199,10 @@ def api_user_new(request,format=None):
 	if request.method == 'POST':
 		serializer=UserSerializer(data=request.data)
 		if serializer.is_valid():
+			users=User.objects.all()
+			for user in users:
+				if serializer['name']==user.name and serializer['email']==user.email:
+					return Response(status=status.HTTP_201_CREATED)
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -278,6 +292,12 @@ def api_music_new(request,format=None):
 	if request.method == 'POST':
 		serializer=MusicSerializer(data=request.data)
 		if serializer.is_valid():
+			musics=Musics.objects.all()
+			for music in musics:
+				if serializer['title']==music.title \
+				and serializer['artist']==music.artist \
+				and serializer['album']==music.album:
+					return Response(status=status.HTTP_201_CREATED)
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
