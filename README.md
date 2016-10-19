@@ -102,11 +102,16 @@ Delete a favourite music from the list of favourites from an existing user.
 5 - Populate the database with musics
 	
 	python populate_db.py
-6 - Run the server:
+
+6 - Run tests
+
+	python manage.py test -v 2 --settings=musicwalletproject.settings.development
+
+7 - Run the server:
 		
 	python manage.py runserver --settings=musicwalletproject.settings.development
 
-7 - Fire up your favourite browser and head to http://127.0.0.1:8000/musicwallet/ 
+8 - Fire up your favourite browser and head to http://127.0.0.1:8000/musicwallet/ 
 
 Enjoy your app !
 
