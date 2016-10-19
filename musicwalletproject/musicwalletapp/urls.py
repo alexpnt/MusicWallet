@@ -2,6 +2,8 @@ from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 import views
 
+handler404 = 'views.handler404'
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     #musics
