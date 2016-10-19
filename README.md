@@ -18,59 +18,60 @@ MusicWallet is a Web App used to manage users and their favourite musics, exposi
 * [MySQL](http://www.mysql.com/)
 * [mysqlclient](https://pypi.python.org/pypi/mysqlclient)
 
+####Live version:####
+
+This project is currently available at http://musicwallet.pythonanywhere.com/
+
 #### REST API:####
+Example calls made using the [httpie client](https://httpie.org):
 
 List users:
 
-```GET /api/users ```
+```http GET http://musicwallet.pythonanywhere.comhttp://musicwallet.pythonanywhere.com/api/users ```
 
 Get details from a user
 
-```GET /api/user/<id> ```
+```http GET http://musicwallet.pythonanywhere.com/api/user/<id> ```
 
 Create a new user by sending a request with json data in the body of the request.{"name":"myname", "email":"myemail"} 
 
-```POST /api/user/new``` 
+```http POST http://musicwallet.pythonanywhere.com/api/user/new``` 
 
 Edit an existing user by sending a request with json data in the body of the request {"name":"newname", "email":"newemail"}. Partial updates are allowed.
 
-```PUT /api/user/<id>/edit```
+```http PUT http://musicwallet.pythonanywhere.com/api/user/<id>/edit```
 
 Delete an existing user.
 
-```DELETE /api/user/<id>/delete``` 
+```http DELETE http://musicwallet.pythonanywhere.com/api/user/<id>/delete``` 
 
 List musics:
 
-```GET /api/musics ```
+```http GET http://musicwallet.pythonanywhere.com/api/musics ```
 
 Get details from a music.
 
-```GET /api/music/<id> ```
+```http GET http://musicwallet.pythonanywhere.com/api/music/<id> ```
 
 Create a new music by sending a request with json data in the body of the request.{"title":"mytitle", "artist":"myartist", "album":"myalbum"}
 
-```POST /api/music/new``` 
+```http POST http://musicwallet.pythonanywhere.com/api/music/new``` 
 
 Edit an existing music by sending a request with json data in the body of the request {"title":"newtitle", "artist":"newartist", "album":"newalbum"}. Partial updates are allowed.
 
-```PUT /api/music/<id>/edit```
+```http PUT http://musicwallet.pythonanywhere.com/api/music/<id>/edit```
 
 Delete an existing music.
 
-```DELETE /api/music/<id>/delete```
+```http DELETE http://musicwallet.pythonanywhere.com/api/music/<id>/delete```
 
 Add an existing music to the list of favourites from an existing user.
 
-```PUT /api/music/<music_id>/user/user_id```
+```http PUT http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/user_id```
 
 Delete a favourite music from the list of favourites from an existing user.
 
-```DELETE /api/music/<music_id>/user/user_id```
-
-####Live version:####
-
-This project is available online at http://musicwallet.pythonanywhere.com/
+```http DELETE http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/user_id```
 
 ####How to run locally:####
 
@@ -110,5 +111,8 @@ Enjoy your app !
 
 	
 	
+
+
+
 
 
