@@ -292,7 +292,7 @@ def api_music_new(request,format=None):
 	if request.method == 'POST':
 		serializer=MusicSerializer(data=request.data)
 		if serializer.is_valid():
-			musics=Musics.objects.all()
+			musics=Music.objects.all()
 			for music in musics:
 				if serializer['title']==music.title \
 				and serializer['artist']==music.artist \
