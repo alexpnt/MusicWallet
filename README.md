@@ -22,7 +22,7 @@ MusicWallet is a Web App used to manage users and their favourite musics, exposi
 
 This project is currently available at http://musicwallet.pythonanywhere.com/
 
-#### REST API:####
+#### REST API:[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ae565d7545fa44b5dd03)####
 Example calls made using the [httpie client](https://httpie.org):
 
 List users:
