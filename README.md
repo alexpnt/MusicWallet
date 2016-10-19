@@ -69,11 +69,11 @@ Delete an existing music.
 
 Add an existing music to the list of favourites from an existing user.
 
-```http PUT http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/user_id```
+```http PUT http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/<user_id>```
 
 Delete a favourite music from the list of favourites from an existing user.
 
-```http DELETE http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/user_id```
+```http DELETE http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/<user_id>```
 
 ####How to run locally:####
 
