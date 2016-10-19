@@ -27,19 +27,19 @@ Example calls made using the [httpie client](https://httpie.org):
 
 List users:
 
-```http GET http://musicwallet.pythonanywhere.comhttp://musicwallet.pythonanywhere.com/api/users ```
+```http GET http://musicwallet.pythonanywhere.com/api/users ```
 
 Get details from a user
 
 ```http GET http://musicwallet.pythonanywhere.com/api/user/<id> ```
 
-Create a new user by sending a request with json data in the body of the request.{"name":"myname", "email":"myemail"} 
+Create a new user by sending a request with json data in the body of the request.
 
-```http POST http://musicwallet.pythonanywhere.com/api/user/new``` 
+```http --json POST http://musicwallet.pythonanywhere.com/api/user/new name="myname" email="myemail"``` 
 
-Edit an existing user by sending a request with json data in the body of the request {"name":"newname", "email":"newemail"}. Partial updates are allowed.
+Edit an existing user by sending a request with json data in the body of the request. Partial updates are allowed.
 
-```http PUT http://musicwallet.pythonanywhere.com/api/user/<id>/edit```
+```http --json PUT http://musicwallet.pythonanywhere.com/api/user/<id>/edit name="newname" email="newemail"```
 
 Delete an existing user.
 
@@ -53,13 +53,13 @@ Get details from a music.
 
 ```http GET http://musicwallet.pythonanywhere.com/api/music/<id> ```
 
-Create a new music by sending a request with json data in the body of the request.{"title":"mytitle", "artist":"myartist", "album":"myalbum"}
+Create a new music by sending a request with json data in the body of the request.
 
-```http POST http://musicwallet.pythonanywhere.com/api/music/new``` 
+```http --json POST http://musicwallet.pythonanywhere.com/api/music/new title="mytitle" artist="myartist" album="myalbum"``` 
 
-Edit an existing music by sending a request with json data in the body of the request {"title":"newtitle", "artist":"newartist", "album":"newalbum"}. Partial updates are allowed.
+Edit an existing music by sending a request with json data in the body of the request. Partial updates are allowed.
 
-```http PUT http://musicwallet.pythonanywhere.com/api/music/<id>/edit```
+```http --json PUT http://musicwallet.pythonanywhere.com/api/music/<id>/edit title="newtitle" artist="newartist" album="newalbum"```
 
 Delete an existing music.
 
