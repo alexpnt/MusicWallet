@@ -201,7 +201,8 @@ def api_user_new(request,format=None):
 		if serializer.is_valid():
 			users=User.objects.all()
 			for user in users:
-				if serializer['name']==user.name and serializer['email']==user.email:
+				if serializer.validated_data['name']==user.name \
+				and serializer.validated_data['email']==user.email:
 					return Response(status=status.HTTP_201_CREATED)
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -294,9 +295,9 @@ def api_music_new(request,format=None):
 		if serializer.is_valid():
 			musics=Music.objects.all()
 			for music in musics:
-				if serializer['title']==music.title \
-				and serializer['artist']==music.artist \
-				and serializer['album']==music.album:
+				if serializer.validated_data['title']==music.title \
+				and serializer.validated_data['artist']==music.artist \
+				and serializer.validated_data['album']==music.album:
 					return Response(status=status.HTTP_201_CREATED)
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
