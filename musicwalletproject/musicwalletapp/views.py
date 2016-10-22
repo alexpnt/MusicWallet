@@ -8,11 +8,15 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from serializers import UserSerializer,MusicSerializer
 from forms import MusicForm,UserForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 index_tpl="musicwalletapp/index.html"
 edit_music_tpl="musicwalletapp/music_edit.html"
 edit_usr_tpl="musicwalletapp/user_edit.html"
+
+def get_404(request):
+	return render(request, 'musicwalletapp/404.html')
 
 def index(request):
 	"""Return the home page with a listing of users and musics.

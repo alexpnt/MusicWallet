@@ -21,3 +21,5 @@ urlpatterns = [
     url(r'', include('musicwalletapp.urls')),
     url(r'^musicwallet/', include('musicwalletapp.urls')),
 ]
+
+handler404 = 'musicwalletapp.views.404_get'
