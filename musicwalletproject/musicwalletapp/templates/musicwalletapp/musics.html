@@ -33,16 +33,19 @@
 					    <td>{{ music.artist}}</td>
 					    <td>{{ music.album}}</td>
 					    <td>
-					    	
+					    
+					    
 						<form name="fav_music_add" method="post" action="{% url 'fav_music_add' pk=music.pk %}">
 							<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 							<input style="float: right;" class="btn btn-link" type="submit" value="Bookmark" />
 						</form>
-						<form name="music_edit" method="post" action="{% url 'music_edit' pk=music.pk %}">
-							<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-							<input style="float: right;" class="btn btn-link" type="submit" value="Edit this music" />
-						</form>
-						<a style="float: right;" title="Delete this music" class="" aria-hidden="true" href="{% url 'music_delete' pk=music.pk %}">Delete this music</a>
+						{% if music.created_by == user %}
+							<a style="float: right;" title="Delete this music" class="btn btn-link" aria-hidden="true" href="{% url 'music_delete' pk=music.pk %}">Delete this music</a>
+							<form name="music_edit" method="post" action="{% url 'music_edit' pk=music.pk %}">
+								<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+								<input style="float: right;" class="btn btn-link" type="submit" value="Edit this music" />
+							</form>
+						{% endif %}
 					    </td>
 				  	</tr>
 					{% endfor %}

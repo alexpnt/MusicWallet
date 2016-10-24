@@ -17,6 +17,7 @@ from django.views.generic.edit import ProcessFormView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.core.exceptions import PermissionDenied
 
 index_tpl="musicwalletapp/index.html"
 edit_music_tpl="musicwalletapp/music_edit.html"
@@ -203,6 +204,13 @@ class AddMusicView(LoginRequiredMixin,CreateView):
 	fields = ['title','artist','album']
 	success_url = reverse_lazy('music_list')
 
+	def form_valid(self, form):
+		if form.is_valid():
+			music=form.save(commit=False)
+			music.created_by=self.request.user 				#associate to creator user
+			music.save()
+		return super(AddMusicView, self).form_valid(form)
+
 class UpdateMusicView(LoginRequiredMixin,UpdateView):
 	"""
 	View used to update an existing music
@@ -219,12 +227,29 @@ class UpdateMusicView(LoginRequiredMixin,UpdateView):
 		context['form'] = self.form_class(instance=music)
 		return context
 
+	def get_object(self, *args, **kwargs):
+		music = super(UpdateMusicView, self).get_object(*args, **kwargs)
+		if music.created_by != self.request.user:
+			msg="Sorry, you are not allowed to do that."
+			messages.add_message(self.request, messages.WARNING, msg)
+			raise PermissionDenied("Sorry, you are not allowed to do that.")
+		return music
+
+
 class DeleteMusicView(LoginRequiredMixin,DeleteView):
 	"""
 	View used to delete an existing music
 	"""
 	model = Music
 	success_url = reverse_lazy('music_list')
+
+	def get_object(self, *args, **kwargs):
+		music = super(DeleteMusicView, self).get_object(*args, **kwargs)
+		if music.created_by != self.request.user:
+			msg="Sorry, you are not allowed to do that."
+			messages.add_message(self.request, messages.WARNING, msg)
+			raise PermissionDenied("Sorry, you are not allowed to do that.")
+		return music
 
 
 
