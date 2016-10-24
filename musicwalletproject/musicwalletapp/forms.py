@@ -1,19 +1,24 @@
 from django import forms
-from models import Music,User
+from models import User,Music
 from django.forms import ModelForm
 
 class UserForm(forms.ModelForm):
 	"""Model form for an user
 	"""
+	email = forms.EmailField(required=True)
+
 	class Meta:
 		model = User
-		fields = ('name', 'email','favourite_musics')
+		fields = ('username', 'email','password')
 
-	def __init__(self, *args, **kwargs):
-	    super(UserForm, self).__init__(*args, **kwargs)
-	    self.fields['name'].required = True
-	    self.fields['email'].required = True
-	    self.fields['favourite_musics'].required = False
+	def save(self):
+		user = User.objects.create_user(
+		    username=self.cleaned_data['username'],
+		    email=self.cleaned_data['email'])
+		user.set_password(self.cleaned_data['password'])		#encrypt password
+		user.save()
+		return user
+
 
 class MusicForm(forms.ModelForm):
 	"""Model form for a music

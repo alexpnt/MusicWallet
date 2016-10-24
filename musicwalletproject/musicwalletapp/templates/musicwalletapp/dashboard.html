@@ -1,0 +1,62 @@
+{% extends 'musicwalletapp/base.html' %}
+{% block content %}
+
+{% include "musicwalletapp/message.html" %}
+
+			<div class="panel panel-default">
+			  <!-- Table -->
+			  <table class="table">
+			  	<tr>
+				    <th style="text-align: right;" >
+				    <a title="Edit Account" class="" aria-hidden="true" href="{% url 'account_view' %}">Account</a>&nbsp;
+				    <a title="Sign Out" class="" aria-hidden="true" href="{% url 'signout' %}">Sign Out</a></th>
+			  	</tr>
+			  </table>
+			  <table class="table">
+			    <tr>
+				    <th bgcolor="#D3D3D3" style="text-align: center;">My Favourite Musics</th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"></th>
+
+			  	</tr>
+			  	<tr>
+				    <th>Title</th>
+				    <th>Artist</th>
+				    <th>Album</th>
+				    <th bgcolor="#D3D3D3"><a title="Add new musics to my list" class="" aria-hidden="true" href="{% url 'music_list' %}">Add favourite music</a></th>
+			  	</tr>
+			  	{% if favourite_musics.count > 0 %}
+				  	{% for music in favourite_musics %}
+				  	<tr>
+					    <td>{{ music.title}}</td>
+					    <td>{{ music.artist}}</td>
+					    <td>{{ music.album}}</td>
+					    <td bgcolor="#D3D3D3"><a title="Remove this music from my list" class="" aria-hidden="true" href="{% url 'fav_music_remove' pk=music.pk %}">Remove from my favourites</a></td>
+				  	</tr>
+					{% endfor %}
+				{% else %}
+				    <td style="text-align: center;">Your list of musics is empty</td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				{% endif %}
+			  </table>
+			  {% if is_paginated %}
+				  	<div class="text-center">
+							<ul class="pagination">
+							{% if page_obj.has_previous %}
+							    <li><span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span></li>
+							{% endif %}
+							    <li class=""><span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span></li>
+							{% if page_obj.has_next %}
+							    <li><span><a href="?page={{ page_obj.next_page_number }}">Next</a></span></li>
+							{% endif %}
+							</ul>
+					</div>
+				{% endif %}
+			</div>
+
+
+{% endblock %}
+

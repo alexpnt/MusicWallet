@@ -19,7 +19,5 @@ from musicwalletapp import views
 
 urlpatterns = [
     url(r'', include('musicwalletapp.urls')),
-    url(r'^musicwallet/', include('musicwalletapp.urls')),
+	url(r'', views.LandPageView.as_view(), name='landpage'),
 ]
-
-handler404 = 'musicwalletapp.views.404_get'

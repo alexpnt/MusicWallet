@@ -1,0 +1,73 @@
+{% extends 'musicwalletapp/base.html' %}
+{% block content %}
+
+{% include "musicwalletapp/message.html" %}
+
+
+<div class="panel panel-default">
+			  <!-- Table -->
+			  <table class="table">
+			  	<tr>
+				    <th style="text-align: right;" >
+				    <a title="Edit Account" class="" aria-hidden="true" href="{% url 'account_view' %}">Account</a>&nbsp;
+				    <a title="Sign Out" class="" aria-hidden="true" href="{% url 'signout' %}">Sign Out</a></th>
+			  	</tr>
+			  </table>
+			  <table class="table">
+			    <tr>
+				    <th bgcolor="#D3D3D3" style="text-align: center;">List of Musics</th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"></th>
+				    <th bgcolor="#D3D3D3"><a style="float: right;" title="Create Music" class="" aria-hidden="true" href="{% url 'music_add' %}">Create Music</a></th></th>
+			  	</tr>
+			  	<tr>
+				    <th>Title</th>
+				    <th>Artist</th>
+				    <th>Album</th>
+				    <th></th>
+			  	</tr>
+			  	{% if musics.count > 0 %}
+				  	{% for music in musics %}
+				  	<tr>
+					    <td>{{ music.title}}</td>
+					    <td>{{ music.artist}}</td>
+					    <td>{{ music.album}}</td>
+					    <td>
+					    	
+						<form name="fav_music_add" method="post" action="{% url 'fav_music_add' pk=music.pk %}">
+							<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+							<input style="float: right;" class="btn btn-link" type="submit" value="Bookmark" />
+						</form>
+						<form name="music_edit" method="post" action="{% url 'music_edit' pk=music.pk %}">
+							<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+							<input style="float: right;" class="btn btn-link" type="submit" value="Edit this music" />
+						</form>
+						<a style="float: right;" title="Delete this music" class="" aria-hidden="true" href="{% url 'music_delete' pk=music.pk %}">Delete this music</a>
+					    </td>
+				  	</tr>
+					{% endfor %}
+				{% else %}
+				<tr>
+				    <td style="text-align: center;">The list of musics is empty</td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				</tr>
+				{% endif %}
+			  	</table>
+
+				  	{% if is_paginated %}
+				  	<div class="text-center">
+							<ul class="pagination">
+							{% if page_obj.has_previous %}
+							    <li><span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span></li>
+							{% endif %}
+							    <li class=""><span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span></li>
+							{% if page_obj.has_next %}
+							    <li><span><a href="?page={{ page_obj.next_page_number }}">Next</a></span></li>
+							{% endif %}
+							</ul>
+					</div>
+				{% endif %}
+			</div>
+{% endblock %}

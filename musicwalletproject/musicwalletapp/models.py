@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class Music(models.Model):
 	"""Data model of a music
@@ -12,12 +13,10 @@ class Music(models.Model):
 	def __str__(self):
 	    return self.title
 
-class User(models.Model):
-	"""Data model of a user
+class User(AbstractUser):
+	"""Data model of an user
 	"""
-	name = models.CharField(max_length=200)
-	email = models.CharField(max_length=200)
 	favourite_musics = models.ManyToManyField(Music, blank=True)
 
 	def __str__(self):
-	    return self.title
+	    return self.user
