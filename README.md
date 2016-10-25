@@ -110,8 +110,8 @@ Delete a favourite music from the list of favourites from an existing user.
 
 8 - Fire up your favourite browser and head to:
         
-    App - http://127.0.0.1:8000/musicwallet/
-    API -   http://127.0.0.1:8000/api/
+	App - http://127.0.0.1:8000/musicwallet/
+	API -   http://127.0.0.1:8000/api/
 
 Enjoy your app !
 
