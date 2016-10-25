@@ -3,20 +3,18 @@ Favourite Music Management App/API
 MusicWallet is a Web App used to manage users and their favourite musics, exposing a REST API, built with Django and the Django Rest Framework.
 
 #### Features (Web and REST API ):####
-* Create/Read/Update/Delete users 
-* Create/Read/Update/Delete musics 
-* List users
-* List musics
-* Add favourite musics to an user
-* List favourite musics of an user
+* Users can sign up/sign in and delete their accounts 
+* Users can edit their created musics
+* Users may bookmark favourite musics
+* Users may remove a music from their bookmarks
 
 
 ####Requirements:####
 * [Python 2.x](https://www.python.org/downloads/)
 * [Django 1.10.2](https://www.djangoproject.com/download/)
-* [Django REST framework](http://www.django-rest-framework.org/)
+* [Django REST framework 3.5.0](http://www.django-rest-framework.org/)
 * [MySQL](http://www.mysql.com/)
-* [mysqlclient](https://pypi.python.org/pypi/mysqlclient)
+* [mysqlclient 1.3.9](https://pypi.python.org/pypi/mysqlclient)
 
 ####Live version:####
 
@@ -25,55 +23,58 @@ This project is currently available at http://musicwallet.pythonanywhere.com/
 #### REST API:####
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ae565d7545fa44b5dd03)
 
+All requests must be signed against a user's username and password or use an authentication token (sent in the Authorization header of the request). 
+
 Example calls made using the [httpie client](https://httpie.org):
+
+Obtaining the authentication token:
+
+```http --json POST http://musicwallet.pythonanywhere.com/api-token-auth/  username=myuser password=mypassword```
+
 
 List users:
 
-```http GET http://musicwallet.pythonanywhere.com/api/users ```
+```http GET http://musicwallet.pythonanywhere.com/api/users/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Get details from a user
 
-```http GET http://musicwallet.pythonanywhere.com/api/user/<id> ```
+```http GET http://musicwallet.pythonanywhere.com/api/users/<id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
-Create a new user by sending a request with json data in the body of the request.
+Edit an existing user by sending a request with json data in the body of the request.
 
-```http --json POST http://musicwallet.pythonanywhere.com/api/user/new name="myname" email="myemail"``` 
-
-Edit an existing user by sending a request with json data in the body of the request. Partial updates are allowed.
-
-```http --json PUT http://musicwallet.pythonanywhere.com/api/user/<id>/edit name="newname" email="newemail"```
+```http --json PUT http://musicwallet.pythonanywhere.com/api/users/<id> username=newname email=newemail password=newpassword Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Delete an existing user.
 
-```http DELETE http://musicwallet.pythonanywhere.com/api/user/<id>/delete``` 
+```http DELETE http://musicwallet.pythonanywhere.com/api/users/<id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"``` 
 
 List musics:
 
-```http GET http://musicwallet.pythonanywhere.com/api/musics ```
+```http GET http://musicwallet.pythonanywhere.com/api/musics/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Get details from a music.
 
-```http GET http://musicwallet.pythonanywhere.com/api/music/<id> ```
+```http GET http://musicwallet.pythonanywhere.com/api/musics/<id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Create a new music by sending a request with json data in the body of the request.
 
-```http --json POST http://musicwallet.pythonanywhere.com/api/music/new title="mytitle" artist="myartist" album="myalbum"``` 
+```http --json POST http://musicwallet.pythonanywhere.com/api/musics/ title=mytitle artist=myartist album=myalbum Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"``` 
 
 Edit an existing music by sending a request with json data in the body of the request. Partial updates are allowed.
 
-```http --json PUT http://musicwallet.pythonanywhere.com/api/music/<id>/edit title="newtitle" artist="newartist" album="newalbum"```
+```http --json PUT http://musicwallet.pythonanywhere.com/api/musics/<id>/ title=newtitle artist=newartist album=newalbum Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Delete an existing music.
 
-```http DELETE http://musicwallet.pythonanywhere.com/api/music/<id>/delete```
+```http DELETE http://musicwallet.pythonanywhere.com/api/musics/<id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Add an existing music to the list of favourites from an existing user.
 
-```http PUT http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/<user_id>```
+```http POST http://musicwallet.pythonanywhere.com/api/users/<music_id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 Delete a favourite music from the list of favourites from an existing user.
 
-```http DELETE http://musicwallet.pythonanywhere.com/api/music/<music_id>/user/<user_id>```
+```http DELETE http://musicwallet.pythonanywhere.com/api/users/<music_id>/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
 ####How to run locally:####
 
@@ -103,10 +104,6 @@ Delete a favourite music from the list of favourites from an existing user.
 	
 	python populate_db.py
 
-6 - Run tests
-
-	python manage.py test -v 2 --settings=musicwalletproject.settings.development
-
 7 - Run the server:
 		
 	python manage.py runserver --settings=musicwalletproject.settings.development
@@ -118,6 +115,7 @@ Enjoy your app !
 
 	
 	
+
 
 
 
