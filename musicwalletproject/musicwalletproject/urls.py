@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
-from musicwalletapp import views
+from musicwalletapp import api_views
+from rest_framework import routers
+from rest_framework.authtoken import views
+
+router = routers.DefaultRouter()
+router.register(r'users', api_views.UserViewSet)
+router.register(r'musics', api_views.MusicViewSet)
 
 urlpatterns = [
-    url(r'', include('musicwalletapp.urls')),
-	url(r'', views.LandPageView.as_view(), name='landpage'),
+    url(r'^api/', include(router.urls,namespace='api')),
+    url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework')),
+    url(r'^musicwallet/', include('musicwalletapp.urls')),
+ 	url(r'^', include('musicwalletapp.urls')),	
 ]

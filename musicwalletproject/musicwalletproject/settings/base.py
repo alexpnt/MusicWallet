@@ -29,6 +29,7 @@ AUTH_USER_MODEL='musicwalletapp.User'
 
 INSTALLED_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'musicwalletapp.apps.MusicwalletappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,6 +66,13 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 WSGI_APPLICATION = 'musicwalletproject.wsgi.application'
 

@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-import views
-
+import views,api_views
 
 urlpatterns = [
     #account management
@@ -20,8 +19,12 @@ urlpatterns = [
     url(r'^dashboard/musics$', views.MusicListView.as_view(), name='music_list'),
     #home
     url(r'^dashboard/$', views.DashboardView.as_view(), name='dashboard'),
+    url(r'', views.LandPageView.as_view(), name='landpage'),
     
 
+    #rest api
+    # url(r'^api/users/$', api_views.UserList.as_view(),name="api_users"),
+    # url(r'^api/musics/$', api_views.MusicList.as_view(),name="api_musics"),
 
     #old
     # url(r'^music/new$', views.music_new, name='music_new'),
@@ -48,4 +51,4 @@ urlpatterns = [
 
 ]
 
-# urlpatterns = format_suffix_patterns(urlpatterns)
+urlpatterns = format_suffix_patterns(urlpatterns)
