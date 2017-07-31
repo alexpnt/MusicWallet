@@ -2,25 +2,25 @@ Favourite Music Management App/API
 ===================================
 MusicWallet is a Web App used to manage users and their favourite musics, exposing a REST API, built with Django and the Django Rest Framework.
 
-#### Features (Web and REST API ):####
+#### Features (Web and REST API ): ####
 * Users can sign up/sign in and delete their accounts 
 * Users can edit their created musics
 * Users may bookmark favourite musics
 * Users may remove a music from their bookmarks
 
 
-####Requirements:####
+#### Requirements: ####
 * [Python 2.x](https://www.python.org/downloads/)
 * [Django 1.10.2](https://www.djangoproject.com/download/)
 * [Django REST framework 3.5.0](http://www.django-rest-framework.org/)
 * [MySQL](http://www.mysql.com/)
 * [mysqlclient 1.3.9](https://pypi.python.org/pypi/mysqlclient)
 
-####Live version:####
+#### Live version: ####
 
 This project is currently available at http://musicwallet.pythonanywhere.com/
 
-#### REST API:####
+#### REST API: ####
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/ae565d7545fa44b5dd03)
 
 
@@ -77,7 +77,7 @@ Delete a favourite music from the list of favourites from an existing user.
 
 ```http DELETE http://musicwallet.pythonanywhere.com/api/users/<music_id>/remove_fav_music/ Authorization:"Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"```
 
-####How to run locally:####
+#### How to run locally: ####
 
 1 - Clone the repository:
 
