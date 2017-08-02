@@ -90,12 +90,12 @@ Delete a favourite music from the list of favourites from an existing user.
 
 3 - Setup the MySQL database
 
-		mysql -uroot
-		mysql>CREATE DATABASE musicwallet_db;
-		mysql>CREATE USER 'mysql'@'localhost' IDENTIFIED BY 'mysql;
-		mysql>GRANT ALL PRIVILEGES ON musicwallet_db.* TO 'mysql'@'localhost'; 
-		mysql>FLUSH PRIVILEGES;
-		mysql>quit
+	mysql -uroot
+	mysql>CREATE DATABASE musicwallet_db;
+	mysql>CREATE USER 'mysql'@'localhost' IDENTIFIED BY 'mysql;
+	mysql>GRANT ALL PRIVILEGES ON musicwallet_db.* TO 'mysql'@'localhost'; 
+	mysql>FLUSH PRIVILEGES;
+	mysql>quit
 
 4 - Run migrations
 
