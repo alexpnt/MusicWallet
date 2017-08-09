@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  web:
+    restart: always
+    build: ./musicwalletproject
+    command: python manage.py runserver --settings=musicwalletproject.settings.development
+    volumes:
+      - ./musicwalletproject:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  data:
